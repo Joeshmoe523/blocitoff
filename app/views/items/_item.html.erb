@@ -1,7 +1,6 @@
-<% item.each do |item| %>
-  <tr class="items-table">
-    <td class="items-row col-md-8"><%= item.description %></td>
-    <td class="items-row col-md-2"><%= item.status %></td>
-    <td class="items-row col-md-2"><%= item.days_left %></td>
-  </tr>
-<% end %>
+<tr class="items-table" id="<%= item.id %>">
+  <td class="items-row col-md-8"><%= item.description %></td>
+  <td class="items-row col-md-2"><%= item.status %></td>
+  <td class="items-row col-md-2"><%= item.days_left %></td>
+  <td>Archive:<input type="checkbox" class="archive-button" data-id="<%=item.id%>"></input></td>
+</tr>

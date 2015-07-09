@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
   belongs_to :user
 
   def days_left
-    (Time.now - self.created_at).round
+    (due_date - Date.today).to_i rescue "THE WORLD IS ENDING"
   end
 
 

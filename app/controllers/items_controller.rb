@@ -2,22 +2,37 @@ class ItemsController < ApplicationController
 
   def index
     @user = current_user
-    @item = Item.where(user_id: @user.id)
+    @items = Item.where(user_id: @user.id)
   end
 
   def new
-  end
-
-  def edit
+    @item = Item.new
   end
 
   def create
+    @item = Item.new(item_params)
+    @item.user_id = current_user.id 
+    if @item.save
+      redirect_to items_path
+      # render :index, notice: "Task was saved to your list."
+    else
+      flash[:error] = "Error creating task. Please try again."
+      render :new
+    end
+  end
+
+  def edit
   end
 
   def update
   end
 
   def destroy
+    @item = Item.find(params[:id])
+    @item.status = "archived"
+    @item.save
+
+    render js: "$('##{@item.id}').slideUp()"
   end
 
   private

@@ -1,5 +1,14 @@
+<div class="row">
+  <div>
+    <h3>My List</h3>
+  </div>
+  <div class="pull-right button">
+    <%= link_to "New Task", new_item_path, class: 'btn btn-success' %>
+  </div>
+</div> 
+
 <div class="table table-striped">
-  <table style="width:100%"
+  <table style="width:100%" class="table-striped">
     <thead>
       <tr class="items-table">
         <th class="items-row col-md-8">Task Description</th>
@@ -8,7 +17,19 @@
       </tr>
     </thead>
     <tbody>
-      <%= render template: "items/_item", locals: { item: @item } %>
+      <%= render partial: "items/item", collection: @items %>
     </tbody>
   </table>
 </div>
+
+
+<script>
+  var archiveItem = function(id){
+    $.ajax("/items/"+id, {method: "DELETE"})
+  }
+
+
+  $(".archive-button").click(function(){
+    archiveItem($(this).data('id'))
+  })
+</script>
