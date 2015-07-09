@@ -1,7 +1,7 @@
 <% item.each do |item| %>
-  <tr>
-    <td class="col-md-8"><%= item.description %></td>
-    <td class="col-md-2"><%= item.status %></td>
-    <td class="col-md-2"><%= item.days_left %></td>
+  <tr class="items-table">
+    <td class="items-row col-md-8"><%= item.description %></td>
+    <td class="items-row col-md-2"><%= item.status %></td>
+    <td class="items-row col-md-2"><%= item.days_left %></td>
   </tr>
 <% end %>
