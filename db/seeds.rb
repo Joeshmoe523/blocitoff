@@ -26,12 +26,23 @@ user_3.save!
 
 users = User.all
 
+#Creating Active Items
 15.times do 
   Item.create!(
     user: users.sample,
     description: Faker::Lorem.sentence,
     status: 'Pending',
     due_date: rand(10.minutes .. 7.days).ago,
+    )
+end
+
+#Creative Active Items that should be Archived
+15.times do
+  Item.create!(
+    user: users.sample,
+    description: Faker::Lorem.sentence,
+    status: 'Pending',
+    due_date: rand(8.days .. 10.days).ago,
     )
 end
 

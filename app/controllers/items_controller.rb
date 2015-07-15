@@ -44,7 +44,6 @@ class ItemsController < ApplicationController
 
   private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:user_id, :due_date, :description, :status)
     end
