@@ -1,2 +1,16 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1>My Profile</h1>
+
+<div>
+  <table class="col-md-4">
+    <tbody>
+      <tr class="success">
+        <td><strong>Active Tasks</strong></td>
+        <td><%= link_to "#{@items.where(status: "Pending").count} tasks", items_path %></td>
+      </tr>
+      <tr class="info">
+        <td><strong>Archived Tasks</strong></td>
+        <td><%= link_to "#{@items.where(status: "Archived").count} tasks", items_path(filter: "archived") %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

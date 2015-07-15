@@ -1,6 +1,6 @@
 <tr class="items-table" id="<%= item.id %>">
   <td class="items-row col-md-8"><%= link_to "#{item.description}", [item] %></td>
-  <td class="items-row col-md-2"><%= item.status %></td>
-  <td class="items-row col-md-2"><%= item.days_left %></td>
+  <td class="items-row-center col-md-2"><%= item.status %></td>
+  <td class="items-row-center col-md-2"><%= item.days_left %></td>
   <td style="text-align:center"><input type="checkbox" class="archive-button" data-id="<%=item.id%>"></input></td>
 </tr>
