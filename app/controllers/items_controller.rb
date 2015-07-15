@@ -2,7 +2,13 @@ class ItemsController < ApplicationController
 
   def index
     @user = current_user
-    @items = Item.where(user_id: @user.id)
+
+    case params[:filter]
+    when "archived"
+      @items = Item.where(user_id: @user.id).where(status: "Archived")
+    else
+      @items = Item.where(user_id: @user.id).where(status: "Pending")
+    end
   end
 
   def new
@@ -22,6 +28,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update
@@ -29,7 +36,7 @@ class ItemsController < ApplicationController
 
   def destroy
     @item = Item.find(params[:id])
-    @item.status = "archived"
+    @item.status = "Archived"
     @item.save
 
     render js: "$('##{@item.id}').slideUp()"

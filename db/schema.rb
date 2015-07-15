@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20150706165848) do
     t.integer  "user_id"
     t.date     "due_date"
     t.text     "description"
-    t.string   "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.string   "status",      default: "Pending"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
   end
 
   add_index "items", ["user_id"], name: "index_items_on_user_id"
