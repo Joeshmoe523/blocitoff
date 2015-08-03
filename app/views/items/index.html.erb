@@ -19,6 +19,9 @@
     </thead>
     <tbody>
       <%= render partial: "items/item", collection: @items %>
+      <tr class="items-table">
+        <%= render partial: "items/form", locals: { item: @item } %>
+      </tr>
     </tbody>
   </table>
 </div>

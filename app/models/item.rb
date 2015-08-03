@@ -5,4 +5,12 @@ class Item < ActiveRecord::Base
     (due_date - Date.today).to_i rescue "THE WORLD IS ENDING"
   end
 
+  def self.active
+    where(status: "Pending")    
+  end
+
+  def self.archived
+    where(status: "Archived")
+  end
+
 end

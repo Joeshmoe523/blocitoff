@@ -5,9 +5,11 @@ class ItemsController < ApplicationController
 
     case params[:filter]
     when "archived"
-      @items = Item.where(user_id: @user.id).where(status: "Archived")
+      @items = Item.archived.where(user_id: @user.id)
+      @item = Item.new
     else
-      @items = Item.where(user_id: @user.id).where(status: "Pending")
+      @items = Item.active.where(user_id: @user.id)
+      @item = Item.new
     end
   end
 
@@ -27,11 +29,19 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
+  def show
     @item = Item.find(params[:id])
   end
 
   def update
+    @item = Item.find(params[:id])
+    if @item.update_attributes(item_params)
+      flash[:notice] = "Task was updated"
+      redirect_to items_path
+    else
+      flash[:error] = "There was an error saving your task. Please try again."
+      render :show
+    end
   end
 
   def destroy

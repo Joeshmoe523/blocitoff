@@ -1,0 +1,11 @@
+<%= form_for item, {url: items_path(item), html: {name: "item"}} do |f| %>
+  <td class="items-row col-md-8 form-group">
+    <%= f.text_field :description, form: "new_item", class: 'form-control', placeholder: "Enter task description" %>
+  </td>
+  <td class="items-row col-md-3 form-group">
+    <%= f.date_field :due_date, form: "new_item", class: 'form-control' %>
+  </td>
+  <td colspan="2" class="items-row col-md-3 form-group">
+    <%= f.submit "Save New Task", form: "new_item", class: 'btn btn-success btn-block' %>
+  </td>
+<% end %>
